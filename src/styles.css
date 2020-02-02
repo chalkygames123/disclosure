@@ -1,0 +1,56 @@
+body {
+  padding: 30px;
+}
+
+h1 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+.item {
+  margin-top: 15px;
+}
+
+.summary {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: transparent;
+  border: 1px solid #000;
+}
+
+.details:not([aria-hidden='false']) {
+  height: 0;
+  overflow: hidden;
+}
+
+.contents {
+  padding: 30px;
+  background-color: #eee;
+  border: 1px solid #000;
+}
+
+.contents img {
+  max-width: 100%;
+}
+
+.close-button {
+  display: block;
+  padding: 6px 12px;
+  margin-top: 15px;
+  background-color: #fff;
+  border: 1px solid #000;
+}
+
+.container {
+  padding: 15px;
+  margin-top: 15px;
+  border: 1px solid #000;
+  transition: background-color 0.5s;
+}
+
+.container.is-open {
+  background-color: #fdd;
+}

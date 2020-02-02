@@ -1,0 +1,175 @@
+/**
+ * ディスクロージャーウィジェットを作成する。
+ *
+ * - DOM API
+ *   - open: この属性を持つ詳細要素は開いた状態となる
+ *   - data-disclosure-close: 詳細要素内のうちこの属性を持つ要素は閉じるボタンとなる
+ *
+ * - 予期される DOM 構造
+ * ```
+ * <button id="disclosure-summary" type="button" aria-controls="disclosure-details">概要要素</button>
+ * <div id="disclosure-details" aria-labelledby="disclosure-summary">詳細要素</div>
+ * ```
+ */
+export default class {
+  /**
+   * @param {HTMLElement} summaryEl - 概要要素となる要素
+   * @param {Object} options - デフォルトオプションをカスタマイズするオブジェクト
+   * @param {string} options.transitionDuration - 詳細要素の CSS transition-duration プロパティに適用する値
+   * @param {string} options.transitionTimingFunction - 詳細要素の CSS transition-timing-function プロパティに適用する値
+   * @param {boolean} options.hashNavigation - 初期化時、URL フラグメントが概要要素の ID と一致する場合に詳細要素を開くかどうか
+   */
+  constructor(summaryEl, options) {
+    this.summaryEl = summaryEl
+    this.options = {
+      transitionDuration: '0.5s',
+      transitionTimingFunction: 'ease',
+      hashNavigation: false,
+      ...options
+    }
+
+    this.init()
+  }
+
+  init() {
+    this.summaryEl.addEventListener('click', e => this.handleClick(e))
+
+    this.detailsEl = document.getElementById(
+      this.summaryEl.getAttribute('aria-controls')
+    )
+
+    this.detailsEl.addEventListener('transitionend', e =>
+      this.handleTransitionEnd(e)
+    )
+
+    this.mutationObserver = new MutationObserver(mutations =>
+      this.handleMutate(mutations)
+    )
+
+    this.mutationObserver.observe(this.detailsEl, {
+      attributes: true,
+      attributeFilter: ['open']
+    })
+
+    if (!this.isOpen) {
+      this.detailsEl.style.height = '0'
+      this.detailsEl.style.overflow = 'hidden'
+      this.detailsEl.style.visibility = 'hidden'
+    }
+
+    this.closeEls = this.detailsEl.querySelectorAll('[data-disclosure-close]')
+
+    Array.prototype.forEach.call(this.closeEls, el => {
+      el.addEventListener('click', e => this.handleCloseClick(e))
+    })
+
+    this.updateAriaAttributes()
+
+    if (this.options.hashNavigation) {
+      const fragment = window.location.hash.substring(1)
+
+      if (this.summaryEl.id === fragment) {
+        if (!this.isOpen) {
+          this.isOpen = true
+          window.requestAnimationFrame(() => {
+            this.handleTransitionEnd()
+          })
+        }
+      }
+    }
+  }
+
+  get isOpen() {
+    return this.detailsEl.hasAttribute('open')
+  }
+
+  set isOpen(value) {
+    if (value) {
+      this.detailsEl.setAttribute('open', '')
+    } else {
+      this.detailsEl.removeAttribute('open')
+    }
+
+    this.updateAriaAttributes()
+  }
+
+  open() {
+    this.detailsEl.style.transition = `height ${this.options.transitionDuration} ${this.options.transitionTimingFunction}`
+
+    this.detailsEl.style.height = `${this.detailsEl.scrollHeight}px`
+    this.detailsEl.style.visibility = ''
+
+    this.summaryEl.dispatchEvent(
+      new CustomEvent('open', {
+        bubbles: true
+      })
+    )
+  }
+
+  close() {
+    this.detailsEl.style.height = `${this.detailsEl.scrollHeight}px`
+    // レイアウトを強制する
+    this.detailsEl.getBoundingClientRect()
+    this.detailsEl.style.height = '0'
+    this.detailsEl.style.overflow = 'hidden'
+
+    this.detailsEl.style.transition = `height ${this.options.transitionDuration} ${this.options.transitionTimingFunction}`
+
+    this.summaryEl.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest'
+    })
+
+    this.summaryEl.dispatchEvent(
+      new CustomEvent('close', {
+        bubbles: true
+      })
+    )
+  }
+
+  updateAriaAttributes() {
+    this.summaryEl.setAttribute('aria-expanded', this.isOpen)
+    this.detailsEl.setAttribute('aria-hidden', !this.isOpen)
+  }
+
+  handleClick() {
+    this.isOpen = !this.isOpen
+  }
+
+  handleCloseClick() {
+    this.isOpen = false
+  }
+
+  handleTransitionEnd() {
+    this.detailsEl.style.transition = ''
+
+    if (this.isOpen) {
+      this.detailsEl.style.height = ''
+      this.detailsEl.style.overflow = ''
+
+      this.summaryEl.dispatchEvent(
+        new CustomEvent('opened', {
+          bubbles: true
+        })
+      )
+    } else {
+      this.detailsEl.style.visibility = 'hidden'
+
+      this.summaryEl.dispatchEvent(
+        new CustomEvent('closed', {
+          bubbles: true
+        })
+      )
+    }
+  }
+
+  handleMutate(mutations) {
+    mutations.forEach(() => {
+      if (this.isOpen) {
+        this.open()
+      } else {
+        this.close()
+      }
+    })
+  }
+}
