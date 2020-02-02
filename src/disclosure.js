@@ -38,6 +38,20 @@ export default class {
       this.summaryEl.getAttribute('aria-controls')
     )
 
+    const hashMatch =
+      this.options.hashNavigation &&
+      this.summaryEl.id === window.location.hash.substring(1)
+
+    if (!this.isOpen && !hashMatch) {
+      this.detailsEl.style.height = '0'
+      this.detailsEl.style.overflow = 'hidden'
+      this.detailsEl.style.visibility = 'hidden'
+    }
+
+    if (hashMatch) {
+      this.detailsEl.setAttribute('open', '')
+    }
+
     this.detailsEl.addEventListener('transitionend', e =>
       this.handleTransitionEnd(e)
     )
@@ -51,12 +65,6 @@ export default class {
       attributeFilter: ['open']
     })
 
-    if (!this.isOpen) {
-      this.detailsEl.style.height = '0'
-      this.detailsEl.style.overflow = 'hidden'
-      this.detailsEl.style.visibility = 'hidden'
-    }
-
     this.closeEls = this.detailsEl.querySelectorAll('[data-disclosure-close]')
 
     Array.prototype.forEach.call(this.closeEls, el => {
@@ -64,19 +72,6 @@ export default class {
     })
 
     this.updateAriaAttributes()
-
-    if (this.options.hashNavigation) {
-      const fragment = window.location.hash.substring(1)
-
-      if (this.summaryEl.id === fragment) {
-        if (!this.isOpen) {
-          this.isOpen = true
-          window.requestAnimationFrame(() => {
-            this.handleTransitionEnd()
-          })
-        }
-      }
-    }
   }
 
   get isOpen() {
@@ -107,6 +102,15 @@ export default class {
   }
 
   close() {
+    const summaryElClientRect = this.summaryEl.getBoundingClientRect()
+
+    if (
+      summaryElClientRect.top < 0 ||
+      window.innerHeight < summaryElClientRect.bottom
+    ) {
+      this.summaryEl.scrollIntoView()
+    }
+
     this.detailsEl.style.height = `${this.detailsEl.scrollHeight}px`
     // レイアウトを強制する
     this.detailsEl.getBoundingClientRect()
@@ -114,11 +118,6 @@ export default class {
     this.detailsEl.style.overflow = 'hidden'
 
     this.detailsEl.style.transition = `height ${this.options.transitionDuration} ${this.options.transitionTimingFunction}`
-
-    this.summaryEl.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest'
-    })
 
     this.summaryEl.dispatchEvent(
       new CustomEvent('close', {
