@@ -38,18 +38,17 @@ export default class {
       this.summaryEl.getAttribute('aria-controls')
     )
 
-    const hashMatch =
-      this.options.hashNavigation &&
-      this.summaryEl.id === window.location.hash.substring(1)
-
-    if (!this.isOpen && !hashMatch) {
-      this.detailsEl.style.height = '0'
-      this.detailsEl.style.overflow = 'hidden'
-      this.detailsEl.style.visibility = 'hidden'
-    }
-
-    if (hashMatch) {
-      this.detailsEl.setAttribute('open', '')
+    if (!this.isOpen) {
+      if (
+        this.options.hashNavigation &&
+        this.summaryEl.id === window.location.hash.substring(1)
+      ) {
+        this.detailsEl.setAttribute('open', '')
+      } else {
+        this.detailsEl.style.height = '0'
+        this.detailsEl.style.overflow = 'hidden'
+        this.detailsEl.style.visibility = 'hidden'
+      }
     }
 
     this.detailsEl.addEventListener('transitionend', e =>
