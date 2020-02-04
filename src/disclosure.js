@@ -51,9 +51,11 @@ export default class {
       }
     }
 
-    this.detailsEl.addEventListener('transitionend', e =>
-      this.handleTransitionEnd(e)
-    )
+    if (this.noTransition) {
+      this.detailsEl.addEventListener('transitionend', e =>
+        this.handleTransitionEnd(e)
+      )
+    }
 
     this.mutationObserver = new MutationObserver(mutations =>
       this.handleMutate(mutations)
@@ -85,6 +87,10 @@ export default class {
     }
 
     this.updateAriaAttributes()
+  }
+
+  get noTransition() {
+    return this.options.transitionDuration.match(/[+-]?0m?s/)
   }
 
   open() {
@@ -169,5 +175,9 @@ export default class {
         this.close()
       }
     })
+
+    if (this.noTransition) {
+      this.handleTransitionEnd()
+    }
   }
 }
