@@ -1,6 +1,9 @@
 {
   "private": true,
   "main": "index.html",
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
     "build": "parcel build index.html",
     "format": "yarn format-check --write",
