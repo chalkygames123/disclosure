@@ -70,7 +70,7 @@ export default class {
 
     this.closeEls = this.detailsEl.querySelectorAll('[data-disclosure-close]')
 
-    Array.prototype.forEach.call(this.closeEls, el => {
+    this.closeEls.forEach(el => {
       el.addEventListener('click', e => this.handleCloseClick(e))
     })
 
