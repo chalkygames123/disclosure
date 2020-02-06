@@ -1,23 +1,25 @@
 /**
  * ディスクロージャーウィジェットを作成する。
  *
- * - DOM API
+ * DOM API:
+ *
  *   - open: この属性を持つ詳細要素は開いた状態となる
  *   - data-disclosure-close: 詳細要素内のうちこの属性を持つ要素は閉じるボタンとなる
  *
- * - 予期される DOM 構造
- * ```
- * <button id="disclosure-summary" type="button" aria-controls="disclosure-details">概要要素</button>
- * <div id="disclosure-details" aria-labelledby="disclosure-summary">詳細要素</div>
- * ```
+ * 予期される DOM 構造:
+ *
+ *   ```
+ *   <button id="disclosure-summary" type="button" aria-controls="disclosure-details">概要要素</button>
+ *   <div id="disclosure-details" aria-labelledby="disclosure-summary">詳細要素</div>
+ *   ```
  */
 export default class {
   /**
-   * @param {HTMLElement} summaryEl - 概要要素となる要素
-   * @param {Object} options - デフォルトオプションをカスタマイズするオブジェクト
+   * @param {HTMLElement} summaryEl - 概要要素
+   * @param {Object} options - オプション
    * @param {string} options.transitionDuration - 詳細要素の CSS transition-duration プロパティに適用する値
    * @param {string} options.transitionTimingFunction - 詳細要素の CSS transition-timing-function プロパティに適用する値
-   * @param {boolean} options.hashNavigation - 初期化時、URL フラグメントが概要要素の ID と一致する場合に詳細要素を開くかどうか
+   * @param {boolean} options.hashNavigation - 初期化時、概要要素の ID が URL フラグメントと一致する場合に詳細要素を開くかどうか
    */
   constructor(summaryEl, options) {
     this.summaryEl = summaryEl
@@ -51,7 +53,7 @@ export default class {
       }
     }
 
-    if (this.noTransition) {
+    if (!this.noTransition) {
       this.detailsEl.addEventListener('transitionend', e =>
         this.handleTransitionEnd(e)
       )
@@ -90,7 +92,7 @@ export default class {
   }
 
   get noTransition() {
-    return this.options.transitionDuration.match(/[+-]?0m?s/)
+    return /^[+-]?0+m?s/.test(this.options.transitionDuration)
   }
 
   open() {
