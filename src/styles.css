@@ -1,13 +1,11 @@
 body {
-  padding: 30px;
-}
-
-h1 {
-  margin: 0;
+  padding: 25px;
+  font-family: serif;
 }
 
 p {
   margin: 0;
+  line-height: 1.4;
 }
 
 .item {
@@ -17,6 +15,7 @@ p {
 .summary {
   display: inline-block;
   padding: 6px 12px;
+  text-align: left;
   background-color: transparent;
   border: 1px solid #000;
 }
@@ -27,7 +26,7 @@ p {
 }
 
 .contents {
-  padding: 30px;
+  padding: 25px;
   background-color: #eee;
   border: 1px solid #000;
 }
@@ -42,15 +41,4 @@ p {
   margin-top: 15px;
   background-color: #fff;
   border: 1px solid #000;
-}
-
-.container {
-  padding: 15px;
-  margin-top: 15px;
-  border: 1px solid #000;
-  transition: background-color 0.5s;
-}
-
-.container.is-open {
-  background-color: #fdd;
 }

@@ -10,14 +10,12 @@ Array.prototype.forEach.call(
   }
 )
 
-document
-  .getElementById('disclosure-05-container')
-  .addEventListener('open', e => {
-    e.currentTarget.classList.add('is-open')
-  })
+const summaryEl = document.getElementById('disclosure-04-summary')
+const eventTypes = ['open', 'opened', 'close', 'closed']
+const eventTypeEl = document.getElementById('event-type')
 
-document
-  .getElementById('disclosure-05-container')
-  .addEventListener('close', e => {
-    e.currentTarget.classList.remove('is-open')
+eventTypes.forEach(type => {
+  summaryEl.addEventListener(type, e => {
+    eventTypeEl.textContent = e.type
   })
+})

@@ -106,19 +106,45 @@
       </div>
 
       <div class="item">
-        <a
+        <button
           class="summary"
           id="disclosure-04-summary"
-          href="#disclosure-04-summary"
+          type="button"
           aria-controls="disclosure-04-details"
+          data-disclosure
+        >
+          CustomEvent: <span id="event-type"></span>
+        </button>
+        <div
+          class="details"
+          id="disclosure-04-details"
+          aria-labelledby="disclosure-04-summary"
+        >
+          <div class="contents">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
+              obcaecati error, repellat ut enim nemo consequuntur quo dolor ad
+              dolorum doloribus, esse, expedita ea laboriosam voluptatem cum
+              itaque optio qui.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="item">
+        <a
+          class="summary"
+          id="disclosure-05-summary"
+          href="#disclosure-05-summary"
+          aria-controls="disclosure-05-details"
           data-disclosure
         >
           Auto open if the id matches URL's fragment (Try to open in new window)
         </a>
         <div
           class="details"
-          id="disclosure-04-details"
-          aria-labelledby="disclosure-04-summary"
+          id="disclosure-05-details"
+          aria-labelledby="disclosure-05-summary"
         >
           <div class="contents">
             <p>
@@ -127,34 +153,6 @@
               impedit ratione ducimus quis suscipit reprehenderit! Cupiditate
               voluptatum harum nam laboriosam, nihil nulla?
             </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="container" id="disclosure-05-container">
-          <button
-            class="summary"
-            id="disclosure-05-summary"
-            type="button"
-            aria-controls="disclosure-05-details"
-            data-disclosure
-          >
-            With a container that toggles class
-          </button>
-          <div
-            class="details"
-            id="disclosure-05-details"
-            aria-labelledby="disclosure-05-summary"
-          >
-            <div class="contents">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
-                obcaecati error, repellat ut enim nemo consequuntur quo dolor ad
-                dolorum doloribus, esse, expedita ea laboriosam voluptatem cum
-                itaque optio qui.
-              </p>
-            </div>
           </div>
         </div>
       </div>
