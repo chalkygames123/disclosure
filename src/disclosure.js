@@ -134,8 +134,8 @@ export default class {
   }
 
   updateAriaAttributes() {
-    this.summaryEl.setAttribute('aria-expanded', this.isOpen)
-    this.detailsEl.setAttribute('aria-hidden', !this.isOpen)
+    this.summaryEl.setAttribute('aria-expanded', `${this.isOpen}`)
+    this.detailsEl.setAttribute('aria-hidden', `${!this.isOpen}`)
   }
 
   handleClick() {
