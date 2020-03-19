@@ -4,7 +4,7 @@
  * DOM API:
  *
  *   - open: この属性を持つ詳細要素は開いた状態となる
- *   - data-disclosure-close: 詳細要素内のうちこの属性を持つ要素は閉じるボタンとなる
+ *   - data-disclosure-close: 詳細要素内にあるこの属性を持つ要素は閉じるボタンとなる
  *
  * 予期される DOM 構造:
  *
