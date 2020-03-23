@@ -6,7 +6,7 @@
  *   - open: この属性を持つ詳細要素は開いた状態となる
  *   - data-disclosure-close: 詳細要素内にあるこの属性を持つ要素は閉じるボタンとなる
  *
- * 予期される DOM 構造:
+ * 期待される DOM 構造:
  *
  *   ```
  *   <button id="disclosure-summary" type="button" aria-controls="disclosure-details">概要要素</button>
