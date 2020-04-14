@@ -33,8 +33,26 @@ export default class {
     this.init()
   }
 
+  get isOpen() {
+    return this.detailsEl.hasAttribute('open')
+  }
+
+  set isOpen(value) {
+    if (value) {
+      this.detailsEl.setAttribute('open', '')
+    } else {
+      this.detailsEl.removeAttribute('open')
+    }
+  }
+
+  get noTransition() {
+    return /^[+-]?0+m?s/.test(this.options.transitionDuration)
+  }
+
   init() {
-    this.summaryEl.addEventListener('click', (e) => this.handleClick(e))
+    this.summaryEl.addEventListener('click', () => {
+      this.isOpen = !this.isOpen
+    })
 
     this.detailsEl = document.getElementById(
       this.summaryEl.getAttribute('aria-controls')
@@ -54,16 +72,14 @@ export default class {
     }
 
     if (!this.noTransition) {
-      this.detailsEl.addEventListener('transitionend', (e) =>
-        this.handleTransitionEnd(e)
-      )
+      this.detailsEl.addEventListener('transitionend', (e) => this.cleanUp(e))
     }
 
-    this.mutationObserver = new MutationObserver((mutations) =>
-      this.handleMutate(mutations)
+    const mutationObserver = new MutationObserver((mutations) =>
+      this.handleOpenAttributeChange(mutations)
     )
 
-    this.mutationObserver.observe(this.detailsEl, {
+    mutationObserver.observe(this.detailsEl, {
       attributes: true,
       attributeFilter: ['open'],
     })
@@ -71,28 +87,17 @@ export default class {
     this.closeEls = this.detailsEl.querySelectorAll('[data-disclosure-close]')
 
     this.closeEls.forEach((el) => {
-      el.addEventListener('click', (e) => this.handleCloseClick(e))
+      el.addEventListener('click', () => {
+        this.isOpen = false
+      })
     })
 
     this.updateAriaAttributes()
   }
 
-  get isOpen() {
-    return this.detailsEl.hasAttribute('open')
-  }
-
-  set isOpen(value) {
-    if (value) {
-      this.detailsEl.setAttribute('open', '')
-    } else {
-      this.detailsEl.removeAttribute('open')
-    }
-
-    this.updateAriaAttributes()
-  }
-
-  get noTransition() {
-    return /^[+-]?0+m?s/.test(this.options.transitionDuration)
+  updateAriaAttributes() {
+    this.summaryEl.setAttribute('aria-expanded', `${this.isOpen}`)
+    this.detailsEl.setAttribute('aria-hidden', `${!this.isOpen}`)
   }
 
   open() {
@@ -100,6 +105,8 @@ export default class {
 
     this.detailsEl.style.height = `${this.detailsEl.scrollHeight}px`
     this.detailsEl.style.visibility = ''
+
+    this.updateAriaAttributes()
 
     this.summaryEl.dispatchEvent(
       new CustomEvent('open', {
@@ -119,12 +126,14 @@ export default class {
     }
 
     this.detailsEl.style.height = `${this.detailsEl.scrollHeight}px`
-    // レイアウトを強制する
+    // レイアウトを強制する (参考: https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
     this.detailsEl.getBoundingClientRect()
     this.detailsEl.style.height = '0'
     this.detailsEl.style.overflow = 'hidden'
 
     this.detailsEl.style.transition = `height ${this.options.transitionDuration} ${this.options.transitionTimingFunction}`
+
+    this.updateAriaAttributes()
 
     this.summaryEl.dispatchEvent(
       new CustomEvent('close', {
@@ -133,20 +142,7 @@ export default class {
     )
   }
 
-  updateAriaAttributes() {
-    this.summaryEl.setAttribute('aria-expanded', `${this.isOpen}`)
-    this.detailsEl.setAttribute('aria-hidden', `${!this.isOpen}`)
-  }
-
-  handleClick() {
-    this.isOpen = !this.isOpen
-  }
-
-  handleCloseClick() {
-    this.isOpen = false
-  }
-
-  handleTransitionEnd() {
+  cleanUp() {
     this.detailsEl.style.transition = ''
 
     if (this.isOpen) {
@@ -169,7 +165,7 @@ export default class {
     }
   }
 
-  handleMutate(mutations) {
+  handleOpenAttributeChange(mutations) {
     mutations.forEach(() => {
       if (this.isOpen) {
         this.open()
@@ -179,7 +175,7 @@ export default class {
     })
 
     if (this.noTransition) {
-      this.handleTransitionEnd()
+      this.cleanUp()
     }
   }
 }
