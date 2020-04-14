@@ -27,14 +27,14 @@ export default class {
       transitionDuration: '0.5s',
       transitionTimingFunction: 'ease',
       hashNavigation: false,
-      ...options
+      ...options,
     }
 
     this.init()
   }
 
   init() {
-    this.summaryEl.addEventListener('click', e => this.handleClick(e))
+    this.summaryEl.addEventListener('click', (e) => this.handleClick(e))
 
     this.detailsEl = document.getElementById(
       this.summaryEl.getAttribute('aria-controls')
@@ -54,24 +54,24 @@ export default class {
     }
 
     if (!this.noTransition) {
-      this.detailsEl.addEventListener('transitionend', e =>
+      this.detailsEl.addEventListener('transitionend', (e) =>
         this.handleTransitionEnd(e)
       )
     }
 
-    this.mutationObserver = new MutationObserver(mutations =>
+    this.mutationObserver = new MutationObserver((mutations) =>
       this.handleMutate(mutations)
     )
 
     this.mutationObserver.observe(this.detailsEl, {
       attributes: true,
-      attributeFilter: ['open']
+      attributeFilter: ['open'],
     })
 
     this.closeEls = this.detailsEl.querySelectorAll('[data-disclosure-close]')
 
-    this.closeEls.forEach(el => {
-      el.addEventListener('click', e => this.handleCloseClick(e))
+    this.closeEls.forEach((el) => {
+      el.addEventListener('click', (e) => this.handleCloseClick(e))
     })
 
     this.updateAriaAttributes()
@@ -103,7 +103,7 @@ export default class {
 
     this.summaryEl.dispatchEvent(
       new CustomEvent('open', {
-        bubbles: true
+        bubbles: true,
       })
     )
   }
@@ -128,7 +128,7 @@ export default class {
 
     this.summaryEl.dispatchEvent(
       new CustomEvent('close', {
-        bubbles: true
+        bubbles: true,
       })
     )
   }
@@ -155,7 +155,7 @@ export default class {
 
       this.summaryEl.dispatchEvent(
         new CustomEvent('opened', {
-          bubbles: true
+          bubbles: true,
         })
       )
     } else {
@@ -163,7 +163,7 @@ export default class {
 
       this.summaryEl.dispatchEvent(
         new CustomEvent('closed', {
-          bubbles: true
+          bubbles: true,
         })
       )
     }

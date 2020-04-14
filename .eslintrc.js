@@ -1,13 +1,14 @@
 module.exports = {
   root: true,
   env: {
-    browser: true
+    browser: true,
   },
   extends: [
     'airbnb-base',
     'plugin:eslint-comments/recommended',
-    'plugin:prettier/recommended'
+    'plugin:prettier/recommended',
   ],
+  ignorePatterns: ['!.*'],
   rules: {
     'import/order': [
       'error',
@@ -19,31 +20,13 @@ module.exports = {
           'unknown',
           'parent',
           'sibling',
-          'index'
+          'index',
         ],
         'newlines-between': 'always',
         alphabetize: {
-          order: 'asc'
-        }
-      }
-    ]
+          order: 'asc',
+        },
+      },
+    ],
   },
-  overrides: [
-    {
-      files: [
-        'gulpfile.js/**',
-        '.stylelintrc.js',
-        'config-schema.js',
-        'postcss.config.js'
-      ],
-      rules: {
-        'import/no-extraneous-dependencies': [
-          'error',
-          {
-            optionalDependencies: false
-          }
-        ]
-      }
-    }
-  ]
 }
