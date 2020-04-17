@@ -95,11 +95,6 @@ export default class {
     this.updateAriaAttributes()
   }
 
-  updateAriaAttributes() {
-    this.summaryEl.setAttribute('aria-expanded', `${this.isOpen}`)
-    this.detailsEl.setAttribute('aria-hidden', `${!this.isOpen}`)
-  }
-
   open() {
     this.detailsEl.style.transition = `height ${this.options.transitionDuration} ${this.options.transitionTimingFunction}`
 
@@ -108,22 +103,11 @@ export default class {
 
     this.updateAriaAttributes()
 
-    this.summaryEl.dispatchEvent(
-      new CustomEvent('open', {
-        bubbles: true,
-      })
-    )
+    this.emit('open')
   }
 
   close() {
-    const summaryElClientRect = this.summaryEl.getBoundingClientRect()
-
-    if (
-      summaryElClientRect.top < 0 ||
-      window.innerHeight < summaryElClientRect.bottom
-    ) {
-      this.summaryEl.scrollIntoView()
-    }
+    this.scrollIntoViewIfNeeded()
 
     this.detailsEl.style.height = `${this.detailsEl.scrollHeight}px`
     // レイアウトを強制する (参考: https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
@@ -135,8 +119,28 @@ export default class {
 
     this.updateAriaAttributes()
 
+    this.emit('close')
+  }
+
+  updateAriaAttributes() {
+    this.summaryEl.setAttribute('aria-expanded', `${this.isOpen}`)
+    this.detailsEl.setAttribute('aria-hidden', `${!this.isOpen}`)
+  }
+
+  scrollIntoViewIfNeeded() {
+    const summaryElClientRect = this.summaryEl.getBoundingClientRect()
+
+    if (
+      summaryElClientRect.top < 0 ||
+      window.innerHeight < summaryElClientRect.bottom
+    ) {
+      this.summaryEl.scrollIntoView()
+    }
+  }
+
+  emit(type) {
     this.summaryEl.dispatchEvent(
-      new CustomEvent('close', {
+      new CustomEvent(type, {
         bubbles: true,
       })
     )
@@ -149,19 +153,11 @@ export default class {
       this.detailsEl.style.height = ''
       this.detailsEl.style.overflow = ''
 
-      this.summaryEl.dispatchEvent(
-        new CustomEvent('opened', {
-          bubbles: true,
-        })
-      )
+      this.emit('opened')
     } else {
       this.detailsEl.style.visibility = 'hidden'
 
-      this.summaryEl.dispatchEvent(
-        new CustomEvent('closed', {
-          bubbles: true,
-        })
-      )
+      this.emit('closed')
     }
   }
 
