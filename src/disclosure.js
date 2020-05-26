@@ -110,8 +110,8 @@ export default class {
     this.scrollIntoViewIfNeeded()
 
     this.detailsEl.style.height = `${this.detailsEl.scrollHeight}px`
-    // レイアウトを強制する (参考: https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
-    this.detailsEl.getBoundingClientRect()
+    // eslint-disable-next-line no-unused-expressions
+    this.detailsEl.clientHeight // レイアウトを強制する (参考: https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
     this.detailsEl.style.height = '0'
     this.detailsEl.style.overflow = 'hidden'
 
