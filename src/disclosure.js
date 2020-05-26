@@ -136,6 +136,18 @@ export default class {
     ) {
       this.summaryEl.scrollIntoView()
     }
+
+    /**
+     * IE11 をサポートする場合:
+     */
+    // if (summaryElClientRect.top < 0) {
+    //   window.scrollBy(0, this.summaryEl.getBoundingClientRect().top)
+    // } else if (window.innerHeight < summaryElClientRect.bottom) {
+    //   window.scrollBy(
+    //     0,
+    //     this.summaryEl.getBoundingClientRect().bottom - window.innerHeight
+    //   )
+    // }
   }
 
   emit(type) {
