@@ -19,7 +19,7 @@ export default class {
    * @param {Object} options - オプション
    * @param {string} options.transitionDuration - 詳細要素の CSS transition-duration プロパティに適用する値
    * @param {string} options.transitionTimingFunction - 詳細要素の CSS transition-timing-function プロパティに適用する値
-   * @param {boolean} options.hashNavigation - 初期化時、概要要素の ID が URL フラグメントと一致する場合に詳細要素を開くかどうか
+   * @param {boolean} options.hashNavigation - 初期化時、URL フラグメントに一致する ID を持つ概要要素に対応する詳細要素を開くかどうか
    */
   constructor(summaryEl, options) {
     this.summaryEl = summaryEl
