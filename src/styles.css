@@ -20,9 +20,15 @@ p {
   border: 1px solid #000;
 }
 
-.details:not([aria-hidden='false']) {
-  height: 0;
+.details {
   overflow: hidden;
+  transition: height 0.5s;
+}
+
+.details[aria-hidden='true'] {
+  height: 0;
+  visibility: hidden;
+  transition: height 0.5s, visibility 0s 0.5s;
 }
 
 .contents {
