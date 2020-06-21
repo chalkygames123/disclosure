@@ -130,15 +130,12 @@ export default class {
     }
 
     /**
-     * IE11 をサポートする場合:
+     * IE11 をサポートするには、代わりに:
      */
     // if (summaryElClientRect.top < 0) {
-    //   window.scrollBy(0, this.summaryEl.getBoundingClientRect().top)
+    //   window.scrollBy(0, summaryElClientRect.top)
     // } else if (window.innerHeight < summaryElClientRect.bottom) {
-    //   window.scrollBy(
-    //     0,
-    //     this.summaryEl.getBoundingClientRect().bottom - window.innerHeight
-    //   )
+    //   window.scrollBy(0, summaryElClientRect.bottom - window.innerHeight)
     // }
   }
 
