@@ -1,33 +1,27 @@
-/**
- * ディスクロージャーウィジェットを作成する。
- *
- * DOM API:
- *
- *   - aria-hidden 属性の値が true でない詳細要素は開かれた状態となる
- *   - data-disclosure-close: 詳細要素内にあるこの属性を持つ要素は閉じるボタンとなる
- *
- * 期待される DOM 構造:
- *
- *   ```
- *   <button id="disclosure-summary" type="button" aria-controls="disclosure-details">概要要素</button>
- *   <div id="disclosure-details" aria-labelledby="disclosure-summary">詳細要素</div>
- *   ```
- *
- * 推奨される最小のスタイル:
- *
- *   ```
- *   .details {
- *     overflow: hidden;
- *   }
- *
- *   .details[aria-hidden='true'] {
- *     height: 0;
- *     visibility: hidden;
- *   }
- *   ```
- */
 export default class {
   /**
+   * ディスクロージャーウィジェットを作成する。
+   * aria-hidden 属性の値が true でない詳細要素は開かれた状態となる。
+   * 詳細要素内にある data-disclosure-close 属性を持つ要素は閉じるボタンとなる。
+   *
+   * @example <caption>期待される DOM 構造</caption>
+   * ```html
+   * <button id="disclosure-summary" type="button" aria-controls="disclosure-details">概要要素</button>
+   * <div id="disclosure-details" aria-labelledby="disclosure-summary">詳細要素</div>
+   * ```
+   *
+   * @example <caption>推奨される最小のスタイル</caption>
+   * ```css
+   * .details {
+   *   overflow: hidden;
+   * }
+   *
+   * .details[aria-hidden='true'] {
+   *   height: 0;
+   *   visibility: hidden;
+   * }
+   * ```
+   *
    * @param {HTMLElement} summaryEl - 概要要素
    * @param {Object} options - オプション
    * @param {boolean} options.hashNavigation - 初期化時、URL フラグメントに一致する ID を持つ概要要素に対応する詳細要素を開くかどうか
