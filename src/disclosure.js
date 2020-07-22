@@ -26,9 +26,9 @@
  */
 export default class {
   /**
-   * @param {HTMLElement} summaryEl 概要要素
-   * @param {Object} options オプション
-   * @param {boolean} options.hashNavigation 初期化時、URL フラグメントに一致する ID を持つ概要要素に対応する詳細要素を開くかどうか
+   * @param {HTMLElement} - summaryEl 概要要素
+   * @param {Object} - options オプション
+   * @param {boolean} - options.hashNavigation 初期化時、URL フラグメントに一致する ID を持つ概要要素に対応する詳細要素を開くかどうか
    */
   constructor(summaryEl, options) {
     this.summaryEl = summaryEl
