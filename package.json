@@ -13,7 +13,7 @@
     "lint": "run-p lint:* --continue-on-error",
     "lint:scripts": "eslint .",
     "lint:styles": "stylelint \"**/*.css\"",
-    "start": "parcel index.html --open"
+    "dev": "parcel index.html --open"
   },
   "devDependencies": {
     "eslint": "^7.6.0",
