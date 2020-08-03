@@ -160,9 +160,7 @@ export default class {
   }
 
   handleTransitionEnd(e) {
-    if (e.target !== this.detailsEl) {
-      return
-    }
+    if (e && e.target !== this.detailsEl) return
 
     this.detailsEl.removeEventListener(
       'transitionend',
