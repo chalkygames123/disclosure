@@ -1,6 +1,5 @@
 {
   "private": true,
-  "main": "index.html",
   "engines": {
     "node": ">=12"
   },
