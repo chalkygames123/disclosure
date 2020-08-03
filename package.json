@@ -4,7 +4,7 @@
     "node": ">=12"
   },
   "scripts": {
-    "build": "parcel build index.html",
+    "build": "parcel build src/index.html",
     "fix": "run-p fix:* --continue-on-error",
     "fix:scripts": "run-s \"lint:scripts --fix\"",
     "fix:styles": "run-s \"lint:styles --fix\" \"lint:styles --fix\"",
@@ -13,7 +13,7 @@
     "lint": "run-p lint:* --continue-on-error",
     "lint:scripts": "eslint .",
     "lint:styles": "stylelint \"**/*.css\"",
-    "dev": "parcel index.html --open"
+    "dev": "parcel src/index.html --open"
   },
   "devDependencies": {
     "eslint": "^7.6.0",
