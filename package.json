@@ -5,6 +5,7 @@
   },
   "scripts": {
     "build": "parcel build src/index.html",
+    "dev": "parcel src/index.html --open",
     "fix": "run-p fix:* --continue-on-error",
     "fix:scripts": "run-s \"lint:scripts --fix\"",
     "fix:styles": "run-s \"lint:styles --fix\" \"lint:styles --fix\"",
@@ -12,8 +13,7 @@
     "format-check": "prettier . --check",
     "lint": "run-p lint:* --continue-on-error",
     "lint:scripts": "eslint .",
-    "lint:styles": "stylelint \"**/*.css\"",
-    "dev": "parcel src/index.html --open"
+    "lint:styles": "stylelint \"**/*.css\""
   },
   "devDependencies": {
     "eslint": "^7.6.0",
