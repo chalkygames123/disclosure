@@ -13,6 +13,7 @@ module.exports = {
         ignoreAtRules: ['else'],
       },
     ],
+    'comment-empty-line-before': null,
     'declaration-block-no-redundant-longhand-properties': true,
     'declaration-empty-line-before': [
       'always',
