@@ -72,9 +72,13 @@ export default class {
       this.options.hashNavigation &&
       this.summaryEl.id === window.location.hash.substring(1)
     ) {
-      this.detailsEl.style.transition = 'none'
-      this.open()
-      this.detailsEl.style.transition = ''
+      if (this.noTransition) {
+        this.open()
+      } else {
+        this.detailsEl.style.transition = 'none'
+        this.open()
+        this.detailsEl.style.transition = ''
+      }
     }
   }
 
@@ -96,9 +100,12 @@ export default class {
   }
 
   close() {
-    this.detailsEl.style.height = `${this.detailsEl.scrollHeight}px`
-    // eslint-disable-next-line no-unused-expressions
-    this.detailsEl.clientHeight // レイアウトを強制する (参考: https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
+    if (!this.noTransition) {
+      this.detailsEl.style.height = `${this.detailsEl.scrollHeight}px`
+      // eslint-disable-next-line no-unused-expressions
+      this.detailsEl.clientHeight // レイアウトを強制する (参考: https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
+    }
+
     this.detailsEl.style.height = '0'
 
     this.detailsEl.setAttribute('aria-hidden', 'true')
@@ -162,10 +169,12 @@ export default class {
   handleTransitionEnd(e) {
     if (e && e.target !== this.detailsEl) return
 
-    this.detailsEl.removeEventListener(
-      'transitionend',
-      this.handleTransitionEnd
-    )
+    if (!this.noTransition) {
+      this.detailsEl.removeEventListener(
+        'transitionend',
+        this.handleTransitionEnd
+      )
+    }
 
     this.detailsEl.style.height = ''
 
