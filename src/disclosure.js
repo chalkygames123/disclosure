@@ -93,7 +93,7 @@ export default class {
     this.emit('open')
 
     if (this.noTransition) {
-      this.handleTransitionEnd()
+      this.cleanUp()
     } else {
       this.detailsEl.addEventListener('transitionend', this.handleTransitionEnd)
     }
@@ -118,7 +118,7 @@ export default class {
     this.emit('close')
 
     if (this.noTransition) {
-      this.handleTransitionEnd()
+      this.cleanUp()
     } else {
       this.detailsEl.addEventListener('transitionend', this.handleTransitionEnd)
     }
@@ -150,6 +150,23 @@ export default class {
     }
   }
 
+  cleanUp() {
+    if (!this.noTransition) {
+      this.detailsEl.removeEventListener(
+        'transitionend',
+        this.handleTransitionEnd
+      )
+    }
+
+    this.detailsEl.style.height = ''
+
+    if (this.isOpen) {
+      this.emit('opened')
+    } else {
+      this.emit('closed')
+    }
+  }
+
   emit(type) {
     this.summaryEl.dispatchEvent(
       new CustomEvent(type, {
@@ -169,19 +186,6 @@ export default class {
   handleTransitionEnd(e) {
     if (e && e.target !== this.detailsEl) return
 
-    if (!this.noTransition) {
-      this.detailsEl.removeEventListener(
-        'transitionend',
-        this.handleTransitionEnd
-      )
-    }
-
-    this.detailsEl.style.height = ''
-
-    if (this.isOpen) {
-      this.emit('opened')
-    } else {
-      this.emit('closed')
-    }
+    this.cleanUp()
   }
 }
