@@ -8,7 +8,7 @@
  *
  * ```html
  * <button id="disclosure-summary" type="button" aria-controls="disclosure-details">概要要素</button>
- * <div id="disclosure-details" aria-labelledby="disclosure-summary">詳細要素</div>
+ * <div id="disclosure-details" aria-labelledby="disclosure-summary" aria-hidden="true">詳細要素</div>
  * ```
  *
  * 推奨される最小のスタイル:
