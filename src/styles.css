@@ -8,6 +8,10 @@ html {
   font-family: serif;
 }
 
+button:not(:disabled):not([aria-disabled='true']) {
+  cursor: pointer;
+}
+
 .disclosure {
   margin-top: 15px;
 }
