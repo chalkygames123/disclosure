@@ -68,9 +68,9 @@ export default class {
     this.isOpen = this.detailsEl.getAttribute('aria-hidden') !== 'true'
 
     if (
-      !this.isOpen &&
-      this.options.hashNavigation &&
-      this.summaryEl.id === window.location.hash.substring(1)
+      this.isOpen ||
+      (this.options.hashNavigation &&
+        this.summaryEl.id === window.location.hash.substring(1))
     ) {
       if (this.noTransition) {
         this.open()
