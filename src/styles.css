@@ -19,6 +19,7 @@ button:not(:disabled):not([aria-disabled='true']) {
 .summary {
   display: inline-block;
   padding: 6px 12px;
+  touch-action: manipulation;
   border: 1px solid #000;
 }
 
