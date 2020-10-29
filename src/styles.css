@@ -26,6 +26,7 @@ button:not(:disabled):not([aria-disabled='true']) {
 .details {
   overflow: hidden;
   transition: height 0.5s;
+  contain: content;
 }
 
 .details[aria-hidden='true'] {

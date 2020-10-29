@@ -16,6 +16,7 @@
  * ```css
  * .details {
  *   overflow: hidden;
+ *   contain: content;
  * }
  *
  * .details[aria-hidden='true'] {
