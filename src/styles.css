@@ -13,7 +13,7 @@ button:not(:disabled):not([aria-disabled='true']) {
 }
 
 .disclosure {
-  margin-top: 15px;
+  margin-top: 1em;
 }
 
 .summary {
