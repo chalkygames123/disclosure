@@ -12,10 +12,6 @@ button:not(:disabled):not([aria-disabled='true']) {
   cursor: pointer;
 }
 
-.disclosure {
-  margin-top: 1em;
-}
-
 .summary {
   display: inline-block;
   padding: 6px 12px;
