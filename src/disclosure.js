@@ -7,8 +7,8 @@
  * 期待される DOM 構造:
  *
  * ```html
- * <button id="disclosure-summary" type="button" aria-controls="disclosure-details">概要要素</button>
- * <div id="disclosure-details" aria-labelledby="disclosure-summary" aria-hidden="true">詳細要素</div>
+ * <button type="button" aria-controls="disclosure-details">概要要素</button>
+ * <div id="disclosure-details" aria-hidden="true">詳細要素</div>
  * ```
  *
  * 推奨される最小のスタイル:
@@ -71,6 +71,7 @@ export default class {
     if (
       this.isOpen ||
       (this.options.hashNavigation &&
+        this.summaryEl.id &&
         this.summaryEl.id === window.location.hash.substring(1))
     ) {
       if (this.noTransition) {

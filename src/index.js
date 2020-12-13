@@ -7,12 +7,14 @@ document.querySelectorAll('[data-disclosure]').forEach((el) => {
   })
 })
 
-const summaryEl = document.getElementById('disclosure-04-summary')
+const summary04El = document.querySelector(
+  '[data-disclosure][aria-controls="disclosure-04-details"]'
+)
 const eventTypes = ['open', 'opened', 'close', 'closed']
 const eventTypeEl = document.getElementById('event-type')
 
 eventTypes.forEach((type) => {
-  summaryEl.addEventListener(type, (e) => {
+  summary04El.addEventListener(type, (e) => {
     eventTypeEl.textContent = e.type
   })
 })
