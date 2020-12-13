@@ -113,8 +113,6 @@ export default class {
     this.detailsEl.setAttribute('aria-hidden', 'true')
     this.summaryEl.setAttribute('aria-expanded', 'false')
 
-    this.scrollIntoViewIfNeeded()
-
     this.isOpen = false
 
     this.emit('close')
@@ -124,24 +122,6 @@ export default class {
     } else {
       this.detailsEl.addEventListener('transitionend', this.handleTransitionEnd)
     }
-  }
-
-  scrollIntoViewIfNeeded() {
-    const summaryElClientRect = this.summaryEl.getBoundingClientRect()
-
-    if (
-      summaryElClientRect.top < 0 ||
-      window.innerHeight < summaryElClientRect.bottom
-    ) {
-      this.summaryEl.scrollIntoView()
-    }
-
-    // IE11 をサポートするには、代わりに:
-    // if (summaryElClientRect.top < 0) {
-    //   window.scrollBy(0, summaryElClientRect.top)
-    // } else if (window.innerHeight < summaryElClientRect.bottom) {
-    //   window.scrollBy(0, summaryElClientRect.bottom - window.innerHeight)
-    // }
   }
 
   toggle() {
