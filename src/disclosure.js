@@ -163,6 +163,8 @@ export default class {
 
   handleCloseElClick() {
     this.close()
+
+    this.summaryEl.focus()
   }
 
   handleTransitionEnd(e) {
