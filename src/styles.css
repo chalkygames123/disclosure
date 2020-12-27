@@ -12,7 +12,7 @@ button:not(:disabled):not([aria-disabled='true']) {
   cursor: pointer;
 }
 
-.summary {
+.button {
   display: inline-block;
   padding: 6px 12px;
   touch-action: manipulation;

@@ -1,9 +1,25 @@
 import Disclosure from './disclosure'
 
+const disclosures = []
+
 document.querySelectorAll('[data-disclosure]').forEach((el) => {
   // eslint-disable-next-line no-unused-vars
   const disclosure = new Disclosure(el, {
     hashNavigation: true,
+  })
+
+  disclosures.push(disclosure)
+})
+
+document.getElementById('open-all').addEventListener('click', () => {
+  disclosures.forEach((el) => {
+    el.open()
+  })
+})
+
+document.getElementById('close-all').addEventListener('click', () => {
+  disclosures.forEach((el) => {
+    el.close()
   })
 })
 

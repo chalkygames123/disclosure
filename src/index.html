@@ -20,7 +20,11 @@
       <h1>disclosure.js</h1>
       <p>Source: <a href="https://github.com/chalkygames123/disclosure" rel="noreferrer noopener">https://github.com/chalkygames123/disclosure</a></p>
       <div style="margin-top: 1em">
-        <button class="summary" type="button" aria-controls="disclosure-01-details" data-disclosure>Basic</button>
+        <button class="button" id="open-all" type="button">Open all</button>
+        <button class="button" id="close-all" type="button">Close all</button>
+      </div>
+      <div style="margin-top: 1em">
+        <button class="button" type="button" aria-controls="disclosure-01-details" data-disclosure>Basic</button>
       </div>
       <div class="details" id="disclosure-01-details" aria-hidden="true">
         <div class="content">
@@ -28,7 +32,7 @@
         </div>
       </div>
       <div style="margin-top: 1em">
-        <button class="summary" type="button" aria-controls="disclosure-02-details" data-disclosure>Open by default</button>
+        <button class="button" type="button" aria-controls="disclosure-02-details" data-disclosure>Open by default</button>
       </div>
       <div class="details" id="disclosure-02-details">
         <div class="content">
@@ -36,7 +40,7 @@
         </div>
       </div>
       <div style="margin-top: 1em">
-        <button class="summary" type="button" aria-controls="disclosure-03-details" data-disclosure>Close button within</button>
+        <button class="button" type="button" aria-controls="disclosure-03-details" data-disclosure>Close button within</button>
       </div>
       <div class="details" id="disclosure-03-details" aria-hidden="true">
         <div class="content">
@@ -45,7 +49,7 @@
         </div>
       </div>
       <div style="margin-top: 1em">
-        <button class="summary" type="button" aria-controls="disclosure-04-details" data-disclosure>CustomEvent: <span id="event-type">{eventType}</span></button>
+        <button class="button" type="button" aria-controls="disclosure-04-details" data-disclosure>CustomEvent: <span id="event-type">{eventType}</span></button>
       </div>
       <div class="details" id="disclosure-04-details" aria-hidden="true">
         <div class="content">
@@ -53,7 +57,7 @@
         </div>
       </div>
       <div style="margin-top: 1em">
-        <a class="summary" id="disclosure-05-summary" href="#disclosure-05-summary" aria-controls="disclosure-05-details" data-disclosure>Auto open if the URL's fragment matches the id (Try opening this in a new tab)</a>
+        <a class="button" id="disclosure-05-summary" href="#disclosure-05-summary" aria-controls="disclosure-05-details" data-disclosure>Auto open if the URL's fragment matches the id (Try opening this in a new tab)</a>
       </div>
       <div class="details" id="disclosure-05-details" aria-hidden="true">
         <div class="content">
