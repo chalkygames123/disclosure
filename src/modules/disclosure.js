@@ -66,10 +66,8 @@ export default class {
 
     this.handleTransitionEnd = this.handleTransitionEnd.bind(this)
 
-    this.isOpen = this.detailsEl.getAttribute('aria-hidden') !== 'true'
-
     if (
-      this.isOpen ||
+      this.detailsEl.getAttribute('aria-hidden') !== 'true' ||
       (this.options.hashNavigation &&
         this.summaryEl.id &&
         this.summaryEl.id === window.location.hash.substring(1))
@@ -85,6 +83,8 @@ export default class {
   }
 
   open() {
+    if (this.isOpen) return
+
     this.isOpen = true
 
     this.detailsEl.style.height = `${this.detailsEl.scrollHeight}px`
@@ -102,6 +102,8 @@ export default class {
   }
 
   close() {
+    if (!this.isOpen) return
+
     this.isOpen = false
 
     if (!this.noTransition) {
