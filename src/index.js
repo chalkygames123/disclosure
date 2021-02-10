@@ -1,4 +1,4 @@
-import Disclosure from './disclosure'
+import Disclosure from './modules/disclosure'
 
 const disclosures = []
 

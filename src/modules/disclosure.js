@@ -85,23 +85,25 @@ export default class {
   }
 
   open() {
+    this.isOpen = true
+
     this.detailsEl.style.height = `${this.detailsEl.scrollHeight}px`
 
     this.detailsEl.removeAttribute('aria-hidden')
     this.summaryEl.setAttribute('aria-expanded', 'true')
-
-    this.isOpen = true
-
-    this.emit('open')
 
     if (this.noTransition) {
       this.cleanUp()
     } else {
       this.detailsEl.addEventListener('transitionend', this.handleTransitionEnd)
     }
+
+    this.emit('open')
   }
 
   close() {
+    this.isOpen = false
+
     if (!this.noTransition) {
       this.detailsEl.style.height = `${this.detailsEl.scrollHeight}px`
       // eslint-disable-next-line no-unused-expressions
@@ -113,15 +115,13 @@ export default class {
     this.detailsEl.setAttribute('aria-hidden', 'true')
     this.summaryEl.setAttribute('aria-expanded', 'false')
 
-    this.isOpen = false
-
-    this.emit('close')
-
     if (this.noTransition) {
       this.cleanUp()
     } else {
       this.detailsEl.addEventListener('transitionend', this.handleTransitionEnd)
     }
+
+    this.emit('close')
   }
 
   toggle() {
@@ -168,7 +168,7 @@ export default class {
   }
 
   handleTransitionEnd(e) {
-    if (e && e.target !== this.detailsEl) return
+    if (e.target !== this.detailsEl) return
 
     this.cleanUp()
   }
