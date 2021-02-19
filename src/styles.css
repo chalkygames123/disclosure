@@ -13,15 +13,20 @@ h2 {
   font-weight: inherit;
 }
 
-button:not(:disabled):not([aria-disabled='true']) {
-  cursor: pointer;
+h2 a {
+  margin-left: 1em;
 }
 
-.button {
+button {
   display: inline-block;
   padding: 6px 12px;
   touch-action: manipulation;
+  background-color: #fff;
   border: 1px solid #000;
+}
+
+button:not(:disabled):not([aria-disabled='true']) {
+  cursor: pointer;
 }
 
 .details {
@@ -39,12 +44,5 @@ button:not(:disabled):not([aria-disabled='true']) {
 .content {
   padding: 25px;
   background-color: #eee;
-  border: 1px solid #000;
-}
-
-.close {
-  padding: 6px 12px;
-  margin-top: 15px;
-  background-color: #fff;
   border: 1px solid #000;
 }
