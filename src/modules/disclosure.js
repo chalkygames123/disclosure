@@ -25,7 +25,7 @@
  * }
  * ```
  */
-export default class {
+export class Disclosure {
   /**
    * @param {HTMLElement} - summaryEl 概要要素
    * @param {Object} - options オプション
