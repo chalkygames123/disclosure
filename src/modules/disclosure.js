@@ -82,6 +82,19 @@ export class Disclosure {
     }
   }
 
+  scrollIntoViewIfNeeded() {
+    const summaryElClientRect = this.summaryEl.getBoundingClientRect()
+
+    if (
+      summaryElClientRect.top < 0 ||
+      window.innerHeight < summaryElClientRect.bottom
+    ) {
+      this.summaryEl.scrollIntoView({
+        block: 'center',
+      })
+    }
+  }
+
   open() {
     if (this.isOpen) return
 
@@ -167,6 +180,8 @@ export class Disclosure {
     this.close()
 
     this.summaryEl.focus()
+
+    this.scrollIntoViewIfNeeded()
   }
 
   handleTransitionEnd(e) {
