@@ -1,1 +1,1 @@
-export { Disclosure } from './disclosure'
+export { default as Disclosure } from './disclosure'
