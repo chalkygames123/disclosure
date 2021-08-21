@@ -1,85 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+	<head>
+		<meta charset="UTF-8" />
 
-    <title>disclosure</title>
+		<title>disclosure</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sanitize.css@12.0.1/sanitize.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sanitize.css@12.0.1/forms.min.css" />
-    <link rel="stylesheet" href="./index.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sanitize.css@12.0.1/sanitize.min.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sanitize.css@12.0.1/forms.min.css" />
+		<link rel="stylesheet" href="./index.css" />
 
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=CustomEvent%2CElement.prototype.scrollIntoView%2CNodeList.prototype.forEach" defer></script>
-    <script src="./index.js" type="module" defer></script>
-  </head>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=CustomEvent%2CElement.prototype.scrollIntoView%2CNodeList.prototype.forEach" defer></script>
+		<script src="./index.js" type="module" defer></script>
+	</head>
 
-  <body>
-    <main>
-      <h1>disclosure</h1>
-      <p>Source: <a href="https://github.com/chalkygames123/disclosure" rel="noreferrer noopener">https://github.com/chalkygames123/disclosure</a></p>
-      <div style="margin-top: 1em">
-        <button id="open-all" type="button">Open all</button>
-        <button id="close-all" type="button">Close all</button>
-      </div>
-      <hr style="margin-top: 1em" />
-      <section style="margin-top: 1em">
-        <h2>
-          <button type="button" aria-controls="disclosure-01-details" data-disclosure>Basic</button>
-        </h2>
-        <div class="details" id="disclosure-01-details" aria-hidden="true">
-          <div class="content">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel praesentium aliquam voluptas eligendi voluptatem. Animi repudiandae enim tenetur velit expedita explicabo id dolore odio iusto placeat facere, quis eos?</p>
-          </div>
-        </div>
-      </section>
-      <section style="margin-top: 1em">
-        <h2>
-          <button type="button" aria-controls="disclosure-02-details" data-disclosure>Open by default</button>
-        </h2>
-        <div class="details" id="disclosure-02-details">
-          <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam soluta praesentium inventore dolorem! Doloremque commodi impedit libero quidem sed porro, deleniti voluptatem, cupiditate voluptate, id nulla! Officiis molestias itaque eius.</p>
-          </div>
-        </div>
-      </section>
-      <section style="margin-top: 1em">
-        <h2>
-          <button type="button" aria-controls="disclosure-03-details" data-disclosure>Close button inside</button>
-        </h2>
-        <div class="details" id="disclosure-03-details" aria-hidden="true">
-          <div class="content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, non. Quaerat, sit ducimus dolorem unde iste omnis! Beatae tempora quas aliquid suscipit, ullam non veritatis corporis at nulla est! Magnam.</p>
-            <div style="margin-top: 1em">
-              <button type="button" data-disclosure-close>close</button>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section style="margin-top: 1em">
-        <h2>
-          <button type="button" aria-controls="disclosure-04-details" data-disclosure>CustomEvent: <span id="event-type">{{ eventType }}</span></button>
-        </h2>
-        <div class="details" id="disclosure-04-details" aria-hidden="true">
-          <div class="content">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat obcaecati error, repellat ut enim nemo consequuntur quo dolor ad dolorum doloribus, esse, expedita ea laboriosam voluptatem cum itaque optio qui.</p>
-          </div>
-        </div>
-      </section>
-      <section style="margin-top: 1em">
-        <h2>
-          <button id="disclosure-05-summary" type="button" aria-controls="disclosure-05-details" data-disclosure>Automatically opened if the URL's fragment matches the id</button>
-        </h2>
-        <div class="details" id="disclosure-05-details" aria-hidden="true">
-          <div class="content">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste eligendi vitae numquam debitis. Accusamus nihil nobis magnam impedit ratione ducimus quis suscipit reprehenderit! Cupiditate voluptatum harum nam laboriosam, nihil nulla?</p>
-          </div>
-        </div>
-        <div style="margin-top: 0.5em">
-          <a href="#disclosure-05-summary" target="_blank">Open in new tab</a>
-        </div>
-      </section>
-    </main>
-  </body>
+	<body>
+		<main>
+			<h1>disclosure</h1>
+			<p>Source: <a href="https://github.com/chalkygames123/disclosure" rel="noreferrer noopener">https://github.com/chalkygames123/disclosure</a></p>
+			<div style="margin-top: 1em">
+				<button id="open-all" type="button">Open all</button>
+				<button id="close-all" type="button">Close all</button>
+			</div>
+			<hr style="margin-top: 1em" />
+			<section style="margin-top: 1em">
+				<h2>
+					<button type="button" aria-controls="disclosure-01-details" data-disclosure>Basic</button>
+				</h2>
+				<div class="details" id="disclosure-01-details" aria-hidden="true">
+					<div class="content">
+						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel praesentium aliquam voluptas eligendi voluptatem. Animi repudiandae enim tenetur velit expedita explicabo id dolore odio iusto placeat facere, quis eos?</p>
+					</div>
+				</div>
+			</section>
+			<section style="margin-top: 1em">
+				<h2>
+					<button type="button" aria-controls="disclosure-02-details" data-disclosure>Open by default</button>
+				</h2>
+				<div class="details" id="disclosure-02-details">
+					<div class="content">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam soluta praesentium inventore dolorem! Doloremque commodi impedit libero quidem sed porro, deleniti voluptatem, cupiditate voluptate, id nulla! Officiis molestias itaque eius.</p>
+					</div>
+				</div>
+			</section>
+			<section style="margin-top: 1em">
+				<h2>
+					<button type="button" aria-controls="disclosure-03-details" data-disclosure>Close button inside</button>
+				</h2>
+				<div class="details" id="disclosure-03-details" aria-hidden="true">
+					<div class="content">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, non. Quaerat, sit ducimus dolorem unde iste omnis! Beatae tempora quas aliquid suscipit, ullam non veritatis corporis at nulla est! Magnam.</p>
+						<div style="margin-top: 1em">
+							<button type="button" data-disclosure-close>close</button>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section style="margin-top: 1em">
+				<h2>
+					<button type="button" aria-controls="disclosure-04-details" data-disclosure>CustomEvent: <span id="event-type">{{ eventType }}</span></button>
+				</h2>
+				<div class="details" id="disclosure-04-details" aria-hidden="true">
+					<div class="content">
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat obcaecati error, repellat ut enim nemo consequuntur quo dolor ad dolorum doloribus, esse, expedita ea laboriosam voluptatem cum itaque optio qui.</p>
+					</div>
+				</div>
+			</section>
+			<section style="margin-top: 1em">
+				<h2>
+					<button id="disclosure-05-summary" type="button" aria-controls="disclosure-05-details" data-disclosure>Automatically opened if the URL's fragment matches the id</button>
+				</h2>
+				<div class="details" id="disclosure-05-details" aria-hidden="true">
+					<div class="content">
+						<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste eligendi vitae numquam debitis. Accusamus nihil nobis magnam impedit ratione ducimus quis suscipit reprehenderit! Cupiditate voluptatum harum nam laboriosam, nihil nulla?</p>
+					</div>
+				</div>
+				<div style="margin-top: 0.5em">
+					<a href="#disclosure-05-summary" target="_blank">Open in new tab</a>
+				</div>
+			</section>
+		</main>
+	</body>
 </html>
