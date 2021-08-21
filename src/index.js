@@ -2,7 +2,7 @@ import { Disclosure } from './modules'
 
 const disclosures = []
 
-for (const el of document.querySelectorAll('[data-disclosure]')) {
+for (const el of document.querySelectorAll('.js-disclosure')) {
 	const disclosure = new Disclosure(el, {
 		hashNavigation: true,
 	})
@@ -23,7 +23,7 @@ document.querySelector('#close-all').addEventListener('click', () => {
 })
 
 const summary04El = document.querySelector(
-	'[data-disclosure][aria-controls="disclosure-04-details"]'
+	'.js-disclosure[aria-controls="disclosure-04-details"]'
 )
 const eventTypes = ['open', 'opened', 'close', 'closed']
 const eventTypeEl = document.querySelector('#event-type')
