@@ -31,10 +31,10 @@ export default class {
 			`#${this.summaryEl.getAttribute('aria-controls')}`
 		)
 
-		this.closeEls = this.detailsEl.querySelectorAll('[data-disclosure-close]')
+		this.closers = this.detailsEl.querySelectorAll('[data-disclosure-close]')
 		this.handleCloseElClick = this.handleCloseElClick.bind(this)
 
-		for (const el of this.closeEls) {
+		for (const el of this.closers) {
 			el.addEventListener('click', this.handleCloseElClick)
 		}
 
