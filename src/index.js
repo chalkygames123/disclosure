@@ -2,34 +2,34 @@ import { Disclosure } from './modules'
 
 const disclosures = []
 
-document.querySelectorAll('[data-disclosure]').forEach((el) => {
+for (const el of document.querySelectorAll('[data-disclosure]')) {
   const disclosure = new Disclosure(el, {
     hashNavigation: true,
   })
 
   disclosures.push(disclosure)
-})
+}
 
-document.getElementById('open-all').addEventListener('click', () => {
-  disclosures.forEach((el) => {
+document.querySelector('#open-all').addEventListener('click', () => {
+  for (const el of disclosures) {
     el.open()
-  })
+  }
 })
 
-document.getElementById('close-all').addEventListener('click', () => {
-  disclosures.forEach((el) => {
+document.querySelector('#close-all').addEventListener('click', () => {
+  for (const el of disclosures) {
     el.close()
-  })
+  }
 })
 
 const summary04El = document.querySelector(
   '[data-disclosure][aria-controls="disclosure-04-details"]'
 )
 const eventTypes = ['open', 'opened', 'close', 'closed']
-const eventTypeEl = document.getElementById('event-type')
+const eventTypeEl = document.querySelector('#event-type')
 
-eventTypes.forEach((type) => {
+for (const type of eventTypes) {
   summary04El.addEventListener(type, (e) => {
     eventTypeEl.textContent = e.type
   })
-})
+}

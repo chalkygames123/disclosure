@@ -54,15 +54,16 @@ export default class {
     this.handleSummaryElClick = this.handleSummaryElClick.bind(this)
     this.summaryEl.addEventListener('click', this.handleSummaryElClick)
 
-    this.detailsEl = document.getElementById(
-      this.summaryEl.getAttribute('aria-controls')
+    this.detailsEl = document.querySelector(
+      `#${this.summaryEl.getAttribute('aria-controls')}`
     )
 
     this.closeEls = this.detailsEl.querySelectorAll('[data-disclosure-close]')
     this.handleCloseElClick = this.handleCloseElClick.bind(this)
-    this.closeEls.forEach((el) => {
+
+    for (const el of this.closeEls) {
       el.addEventListener('click', this.handleCloseElClick)
-    })
+    }
 
     this.handleTransitionEnd = this.handleTransitionEnd.bind(this)
 
@@ -70,7 +71,7 @@ export default class {
       this.detailsEl.getAttribute('aria-hidden') !== 'true' ||
       (this.options.hashNavigation &&
         this.summaryEl.id &&
-        this.summaryEl.id === window.location.hash.substring(1))
+        this.summaryEl.id === window.location.hash.slice(1))
     ) {
       if (this.noTransition) {
         this.open()
