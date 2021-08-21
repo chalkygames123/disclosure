@@ -1,30 +1,3 @@
-/**
- * ディスクロージャーウィジェットを作成する。
- *
- * - aria-hidden 属性の値が true でない詳細要素は開かれた状態となる。
- * - 詳細要素内にある data-disclosure-close 属性を持つ要素は閉じるボタンとなる。
- *
- * 期待される DOM 構造:
- *
- * ```html
- * <button type="button" aria-controls="disclosure-details">概要要素</button>
- * <div id="disclosure-details" aria-hidden="true">詳細要素</div>
- * ```
- *
- * 推奨される最小のスタイル:
- *
- * ```css
- * .details {
- *   overflow: hidden;
- *   contain: content;
- * }
- *
- * .details[aria-hidden='true'] {
- *   height: 0;
- *   visibility: hidden;
- * }
- * ```
- */
 export default class {
 	/**
 	 * @param {HTMLElement} summaryEl - 概要要素
