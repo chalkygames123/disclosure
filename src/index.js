@@ -23,7 +23,7 @@ document.querySelector('#close-all').addEventListener('click', () => {
 })
 
 const summary04El = document.querySelector(
-	'.js-disclosure[aria-controls="disclosure-04-details"]'
+	'.js-disclosure[aria-controls="disclosure-custom-event-details"]'
 )
 const eventTypes = ['open', 'opened', 'close', 'closed']
 const eventTypeEl = document.querySelector('#event-type')
