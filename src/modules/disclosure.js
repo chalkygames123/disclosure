@@ -1,8 +1,8 @@
 export default class {
 	/**
-	 * @param {HTMLElement} summaryEl - 概要要素
-	 * @param {Object} options - オプション
-	 * @param {boolean} options.hashNavigation - 初期化時、URL フラグメントに一致する ID を持つ概要要素に対応する詳細要素を開くかどうか
+	 * @param {HTMLElement} summaryEl - The summary element
+	 * @param {Object} options - Options
+	 * @param {boolean} options.hashNavigation - Whether to open the disclosure where the summary element with the ID matching the URL fragment lives at initialization
 	 */
 	constructor(summaryEl, options) {
 		this.summaryEl = summaryEl
