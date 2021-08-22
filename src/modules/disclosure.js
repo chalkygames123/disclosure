@@ -1,4 +1,20 @@
 export default class {
+	summaryEl = undefined
+
+	options = {}
+
+	detailsEl = undefined
+
+	closers = []
+
+	isOpen = false
+
+	handleSummaryElClick = this.handleSummaryElClick.bind(this)
+
+	handleCloseElClick = this.handleCloseElClick.bind(this)
+
+	handleTransitionEnd = this.handleTransitionEnd.bind(this)
+
 	/**
 	 * @param {HTMLElement} summaryEl - The summary element
 	 * @param {Object} options - Options
@@ -24,7 +40,6 @@ export default class {
 	}
 
 	init() {
-		this.handleSummaryElClick = this.handleSummaryElClick.bind(this)
 		this.summaryEl.addEventListener('click', this.handleSummaryElClick)
 
 		this.detailsEl = document.querySelector(
@@ -32,13 +47,10 @@ export default class {
 		)
 
 		this.closers = this.detailsEl.querySelectorAll('[data-disclosure-close]')
-		this.handleCloseElClick = this.handleCloseElClick.bind(this)
 
 		for (const el of this.closers) {
 			el.addEventListener('click', this.handleCloseElClick)
 		}
-
-		this.handleTransitionEnd = this.handleTransitionEnd.bind(this)
 
 		if (
 			this.options.hashNavigation &&
