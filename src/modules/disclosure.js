@@ -41,10 +41,9 @@ export default class {
 		this.handleTransitionEnd = this.handleTransitionEnd.bind(this)
 
 		if (
-			this.detailsEl.getAttribute('aria-hidden') !== 'true' ||
-			(this.options.hashNavigation &&
-				this.summaryEl.id &&
-				this.summaryEl.id === window.location.hash.slice(1))
+			this.options.hashNavigation &&
+			this.summaryEl.id &&
+			this.summaryEl.id === window.location.hash.slice(1)
 		) {
 			if (this.noTransition) {
 				this.open()
