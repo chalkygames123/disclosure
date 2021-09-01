@@ -107,7 +107,7 @@ export default class {
 		if (!this.noTransition) {
 			this.detailsEl.style.height = `${this.detailsEl.scrollHeight}px`
 			// eslint-disable-next-line no-unused-expressions
-			this.detailsEl.clientHeight // レイアウトを強制する (参考: https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
+			this.detailsEl.clientHeight // Force layout (See: https://gist.github.com/paulirish/5d52fb081b3570c81e3a)
 		}
 
 		this.detailsEl.style.height = '0'
