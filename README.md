@@ -69,6 +69,14 @@ const summaryElement = document.querySelector('#your-summary-id')
 const disclosure = new Disclosure(summaryElement)
 ```
 
+#### Options
+
+The constructor takes an options object as second argument. Currently, only one option is available:
+
+| Name           | Type    | Default | Description                                                                                                                |
+| -------------- | ------- | ------- | -------------------------------------------------------------------------------------------------------------------------- |
+| hashNavigation | boolean | false   | Whether the disclosure is automatically opened if the ID of the summary element matches the URL fragment on initialization |
+
 ### Interactions
 
 #### DOM API
