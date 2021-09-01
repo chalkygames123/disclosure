@@ -1,19 +1,23 @@
 export default class {
 	summaryEl = undefined
-
 	options = {}
 
 	detailsEl = undefined
-
 	closers = []
-
 	isOpen = false
 
 	handleSummaryElClick = this.handleSummaryElClick.bind(this)
-
 	handleCloseElClick = this.handleCloseElClick.bind(this)
-
 	handleTransitionEnd = this.handleTransitionEnd.bind(this)
+
+	get noTransition() {
+		const detailsElComputedStyle = getComputedStyle(this.detailsEl)
+
+		return (
+			detailsElComputedStyle.transitionDuration === '0s' &&
+			detailsElComputedStyle.transitionDelay === '0s'
+		)
+	}
 
 	/**
 	 * @param {HTMLElement} summaryEl - The summary element
@@ -28,15 +32,6 @@ export default class {
 		}
 
 		this.init()
-	}
-
-	get noTransition() {
-		const detailsElComputedStyle = getComputedStyle(this.detailsEl)
-
-		return (
-			detailsElComputedStyle.transitionDuration === '0s' &&
-			detailsElComputedStyle.transitionDelay === '0s'
-		)
 	}
 
 	init() {
