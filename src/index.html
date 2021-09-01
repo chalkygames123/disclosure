@@ -18,56 +18,22 @@
 	<body>
 		<main>
 			<h1>disclosure</h1>
-			<p>Source: <a href="https://github.com/chalkygames123/disclosure" rel="noreferrer noopener">https://github.com/chalkygames123/disclosure</a></p>
-			<div style="margin-top: 1em">
-				<button id="open-all" type="button">Open all</button>
-				<button id="close-all" type="button">Close all</button>
-			</div>
-			<hr style="margin-top: 1em" />
-			<section style="margin-top: 1em">
+			<p>Source: <a href="https://github.com/chalkygames123/disclosure">https://github.com/chalkygames123/disclosure</a></p>
+			<p class="mt">
+				When the <code>hashNavigation</code> option is enabled, the disclosure is automatically opened if the ID of the summary element matches the URL fragment. <a href="#disclosure-summary" target="_blank">Open in new tab</a>
+			</p>
+			<p class="mt">Current custom event type: <span id="event-type">n/a</span></p>
+			<section class="mt">
 				<h2>
-					<button class="js-disclosure" type="button" aria-controls="disclosure-basic-details">Basic</button>
+					<button id="disclosure-summary" type="button" aria-controls="disclosure-details">Toggle the disclosure</button>
 				</h2>
-				<div class="details" id="disclosure-basic-details" aria-hidden="true">
+				<div class="details" id="disclosure-details" aria-hidden="true">
 					<div class="content">
 						<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati vel praesentium aliquam voluptas eligendi voluptatem. Animi repudiandae enim tenetur velit expedita explicabo id dolore odio iusto placeat facere, quis eos?</p>
-					</div>
-				</div>
-			</section>
-			<section style="margin-top: 1em">
-				<h2>
-					<button class="js-disclosure" type="button" aria-controls="disclosure-close-button-within-details">Close button within</button>
-				</h2>
-				<div class="details" id="disclosure-close-button-within-details" aria-hidden="true">
-					<div class="content">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae, non. Quaerat, sit ducimus dolorem unde iste omnis! Beatae tempora quas aliquid suscipit, ullam non veritatis corporis at nulla est! Magnam.</p>
-						<div style="margin-top: 1em">
+						<div class="mt">
 							<button type="button" data-disclosure-close>Close</button>
 						</div>
 					</div>
-				</div>
-			</section>
-			<section style="margin-top: 1em">
-				<h2>
-					<button class="js-disclosure" type="button" aria-controls="disclosure-custom-event-details">CustomEvent: <span id="event-type">&gt; current event type goes here &lt;</span></button>
-				</h2>
-				<div class="details" id="disclosure-custom-event-details" aria-hidden="true">
-					<div class="content">
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat obcaecati error, repellat ut enim nemo consequuntur quo dolor ad dolorum doloribus, esse, expedita ea laboriosam voluptatem cum itaque optio qui.</p>
-					</div>
-				</div>
-			</section>
-			<section style="margin-top: 1em">
-				<h2>
-					<button class="js-disclosure" id="disclosure-hash-navigation-summary" type="button" aria-controls="disclosure-hash-navigation-details">Automatically opened if the URL's fragment matches the id</button>
-				</h2>
-				<div class="details" id="disclosure-hash-navigation-details" aria-hidden="true">
-					<div class="content">
-						<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste eligendi vitae numquam debitis. Accusamus nihil nobis magnam impedit ratione ducimus quis suscipit reprehenderit! Cupiditate voluptatum harum nam laboriosam, nihil nulla?</p>
-					</div>
-				</div>
-				<div style="margin-top: 0.5em">
-					<a href="#disclosure-hash-navigation-summary" target="_blank">Open in new tab</a>
 				</div>
 			</section>
 		</main>

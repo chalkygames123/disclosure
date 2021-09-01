@@ -1,35 +1,16 @@
 import { Disclosure } from './modules'
 
-const disclosures = []
+const summaryElement = document.querySelector('#disclosure-summary')
 
-for (const el of document.querySelectorAll('.js-disclosure')) {
-	const disclosure = new Disclosure(el, {
-		hashNavigation: true,
-	})
+const eventTypeElement = document.querySelector('#event-type')
 
-	disclosures.push(disclosure)
-}
-
-document.querySelector('#open-all').addEventListener('click', () => {
-	for (const el of disclosures) {
-		el.open()
-	}
-})
-
-document.querySelector('#close-all').addEventListener('click', () => {
-	for (const el of disclosures) {
-		el.close()
-	}
-})
-
-const summary04El = document.querySelector(
-	'.js-disclosure[aria-controls="disclosure-custom-event-details"]'
-)
-const eventTypes = ['open', 'opened', 'close', 'closed']
-const eventTypeEl = document.querySelector('#event-type')
-
-for (const type of eventTypes) {
-	summary04El.addEventListener(type, (e) => {
-		eventTypeEl.textContent = e.type
+for (const eventType of ['open', 'opened', 'close', 'closed']) {
+	summaryElement.addEventListener(eventType, (e) => {
+		eventTypeElement.textContent = e.type
 	})
 }
+
+// eslint-disable-next-line no-unused-vars
+const disclosure = new Disclosure(summaryElement, {
+	hashNavigation: true,
+})

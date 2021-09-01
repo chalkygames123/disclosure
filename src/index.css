@@ -13,10 +13,6 @@ h2 {
 	font-weight: inherit;
 }
 
-h2 a {
-	margin-left: 1em;
-}
-
 button {
 	display: inline-block;
 	padding: 6px 12px;
@@ -27,6 +23,10 @@ button {
 
 button:not(:disabled):not([aria-disabled='true']) {
 	cursor: pointer;
+}
+
+.mt {
+	margin-top: 1em;
 }
 
 .details {
