@@ -18,7 +18,7 @@ export default class {
 	/**
 	 * @param {HTMLElement} summaryEl - The summary element
 	 * @param {Object} options - Options
-	 * @param {boolean} options.hashNavigation - Whether to open the disclosure where the summary element with the ID matching the URL fragment lives at initialization
+	 * @param {boolean} options.hashNavigation - Whether the disclosure is automatically opened if the ID of the summary element matches the URL fragment on initialization
 	 */
 	constructor(summaryEl, options) {
 		this.summaryEl = summaryEl
