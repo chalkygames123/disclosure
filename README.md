@@ -61,6 +61,8 @@ The rest, such as what the disclosure really looks like, and how its content is 
 
 ### Instantiation
 
+Pass the summary element to the constructor.
+
 ```js
 // Get the summary element (with the accessor method you want)
 const summaryElement = document.querySelector('#your-summary-id')
