@@ -71,7 +71,7 @@ const disclosure = new Disclosure(summaryElement)
 
 #### Options
 
-The constructor takes an options object as second argument. Currently, only one option is available:
+The constructor takes an options object as a second argument. Currently, only one option is available:
 
 | Name           | Type    | Default | Description                                                                                                                |
 | -------------- | ------- | ------- | -------------------------------------------------------------------------------------------------------------------------- |
