@@ -65,10 +65,10 @@ Pass the summary element to the constructor.
 
 ```js
 // Get the summary element (with the accessor method you want)
-const summaryElement = document.querySelector('#your-summary-id')
+const summaryElement = document.querySelector('#your-summary-id');
 
 // Instantiate a new Disclosure module
-const disclosure = new Disclosure(summaryElement)
+const disclosure = new Disclosure(summaryElement);
 ```
 
 #### Options
@@ -99,13 +99,13 @@ Regarding the JS API, it simply consists on `open()`, `close()` and `toggle()` m
 
 ```js
 // Open the disclosure
-disclosure.open()
+disclosure.open();
 
 // Close the disclosure
-disclosure.close()
+disclosure.close();
 
 // Toggle the disclosure
-disclosure.toggle()
+disclosure.toggle();
 ```
 
 ### Advanced
@@ -117,17 +117,17 @@ When interaction, the summary element will emit certain events. It is possible t
 ```js
 disclosure.on('open', function (event) {
 	// Do something when disclosure gets open
-})
+});
 
 disclosure.on('opened', function (event) {
 	// Do something when disclosure gets opened
-})
+});
 
 disclosure.on('close', function (event) {
 	// Do something when disclosure gets close
-})
+});
 
 disclosure.on('closed', function (event) {
 	// Do something when disclosure gets closed
-})
+});
 ```
