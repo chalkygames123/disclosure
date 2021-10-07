@@ -91,7 +91,7 @@ export default class {
 			this.detailsEl.addEventListener('transitionend', this.handleTransitionEnd)
 		}
 
-		this.emit('open')
+		this.dispatch('open')
 	}
 
 	close() {
@@ -116,7 +116,7 @@ export default class {
 			this.detailsEl.addEventListener('transitionend', this.handleTransitionEnd)
 		}
 
-		this.emit('close')
+		this.dispatch('close')
 	}
 
 	toggle() {
@@ -138,13 +138,13 @@ export default class {
 		this.detailsEl.style.height = ''
 
 		if (this.isOpen) {
-			this.emit('opened')
+			this.dispatch('opened')
 		} else {
-			this.emit('closed')
+			this.dispatch('closed')
 		}
 	}
 
-	emit(type) {
+	dispatch(type) {
 		this.summaryEl.dispatchEvent(
 			new CustomEvent(type, {
 				bubbles: true,
