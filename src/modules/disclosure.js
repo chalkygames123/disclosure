@@ -10,11 +10,12 @@ export default class Disclosure {
 	isOpen = false;
 
 	get noTransition() {
-		const detailsElComputedStyle = getComputedStyle(this.detailsEl);
+		const computedStyle = getComputedStyle(this.detailsEl);
+		const durations = computedStyle.transitionDuration.split(', ');
+		const delays = computedStyle.transitionDelay.split(', ');
 
 		return (
-			detailsElComputedStyle.transitionDuration === '0s' &&
-			detailsElComputedStyle.transitionDelay === '0s'
+			durations.every((el) => el === '0s') && delays.every((el) => el === '0s')
 		);
 	}
 
