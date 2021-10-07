@@ -1,14 +1,13 @@
 export default class {
 	summaryEl = undefined
+
 	options = {}
 
 	detailsEl = undefined
-	closers = []
-	isOpen = false
 
-	handleSummaryElClick = this.handleSummaryElClick.bind(this)
-	handleCloseElClick = this.handleCloseElClick.bind(this)
-	handleTransitionEnd = this.handleTransitionEnd.bind(this)
+	closers = []
+
+	isOpen = false
 
 	get noTransition() {
 		const detailsElComputedStyle = getComputedStyle(this.detailsEl)
@@ -152,11 +151,11 @@ export default class {
 		)
 	}
 
-	handleSummaryElClick() {
+	handleSummaryElClick = () => {
 		this.toggle()
 	}
 
-	handleCloseElClick() {
+	handleCloseElClick = () => {
 		this.close()
 
 		this.summaryEl.focus()
@@ -164,7 +163,7 @@ export default class {
 		this.scrollIntoViewIfNeeded()
 	}
 
-	handleTransitionEnd(e) {
+	handleTransitionEnd = (e) => {
 		if (e.target !== this.detailsEl) return
 
 		this.cleanUp()
