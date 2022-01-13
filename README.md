@@ -115,19 +115,19 @@ disclosure.toggle();
 When interaction, the summary element will emit certain events. It is possible to subscribe to these with the `addEventListener()` method.
 
 ```js
-disclosure.on('open', function (event) {
+disclosure.addEventListener('open', function (event) {
 	// Do something when disclosure gets open
 });
 
-disclosure.on('opened', function (event) {
+disclosure.addEventListener('opened', function (event) {
 	// Do something when disclosure gets opened
 });
 
-disclosure.on('close', function (event) {
+disclosure.addEventListener('close', function (event) {
 	// Do something when disclosure gets close
 });
 
-disclosure.on('closed', function (event) {
+disclosure.addEventListener('closed', function (event) {
 	// Do something when disclosure gets closed
 });
 ```
