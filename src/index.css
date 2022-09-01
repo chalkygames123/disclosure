@@ -21,7 +21,7 @@ button {
 	border: 1px solid #000;
 }
 
-button:not(:disabled):not([aria-disabled='true']) {
+button:not(:disabled, [aria-disabled='true']) {
 	cursor: pointer;
 }
 
