@@ -15,17 +15,18 @@ export default class Disclosure {
 		const delays = computedStyle.transitionDelay.split(', ');
 
 		return (
-			durations.every((el) => el === '0s') && delays.every((el) => el === '0s')
+			durations.every((item) => item === '0s') &&
+			delays.every((item) => item === '0s')
 		);
 	}
 
 	/**
-	 * @param {HTMLElement} summaryEl - The summary element
+	 * @param {HTMLElement} summary - The summary element
 	 * @param {Object} options - Options
 	 * @param {boolean} options.hashNavigation - Whether the disclosure is automatically opened if the ID of the summary element matches the URL fragment on initialization
 	 */
-	constructor(summaryEl, options) {
-		this.summaryEl = summaryEl;
+	constructor(summary, options) {
+		this.summaryEl = summary;
 		this.options = {
 			hashNavigation: false,
 			...options,
@@ -43,8 +44,8 @@ export default class Disclosure {
 
 		this.closers = this.detailsEl.querySelectorAll('[data-disclosure-close]');
 
-		for (const el of this.closers) {
-			el.addEventListener('click', this.handleCloseElClick);
+		for (const item of this.closers) {
+			item.addEventListener('click', this.handleCloseElClick);
 		}
 
 		if (
@@ -63,11 +64,11 @@ export default class Disclosure {
 	}
 
 	scrollIntoViewIfNeeded() {
-		const summaryElClientRect = this.summaryEl.getBoundingClientRect();
+		const summaryClientRect = this.summaryEl.getBoundingClientRect();
 
 		if (
-			summaryElClientRect.top < 0 ||
-			window.innerHeight < summaryElClientRect.bottom
+			summaryClientRect.top < 0 ||
+			window.innerHeight < summaryClientRect.bottom
 		) {
 			this.summaryEl.scrollIntoView({
 				block: 'center',
@@ -170,8 +171,8 @@ export default class Disclosure {
 		this.scrollIntoViewIfNeeded();
 	};
 
-	handleTransitionEnd = (e) => {
-		if (e.target !== this.detailsEl) return;
+	handleTransitionEnd = (event) => {
+		if (event.target !== this.detailsEl) return;
 
 		this.cleanUp();
 	};
