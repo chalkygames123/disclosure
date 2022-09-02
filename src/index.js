@@ -1,4 +1,4 @@
-import { Disclosure } from './modules';
+import { Disclosure } from './modules/index.js';
 
 const summaryElement = document.querySelector('#disclosure-summary');
 
